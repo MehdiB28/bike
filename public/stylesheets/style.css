@@ -1,0 +1,52 @@
+.header{
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.jumbotron{
+    background-image: url("/images/bike-background.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+card-body {
+    padding:0;
+    text-align: center;
+    padding-top: 10px;
+}
+ 
+
+.shop-title{
+    border-top: solid;
+    border-bottom: solid;
+    border-width: thin;
+    border-color: grey;
+    font-weight:bold;
+    border-color: #e9ecef;
+
+}
+.basket-img{
+    width: 175px;
+}
+
+.shopping-box{
+    padding-top: 15px;
+    scroll-padding-bottom: 15px;
+    border-bottom: solid;
+    border-width: thin;
+    background-color: #FCFCFCFC;
+}
+
+.btn-chexkout{
+    margin-top: 18px;
+    font-weight:bold
+}
+
+.total-box{
+    border-bottom: solid;
+    border-width: thin;
+    font-weight: bold;
+    border-color: #e9ecef;
+
+}
