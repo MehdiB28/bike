@@ -4,11 +4,11 @@ var router = express.Router();
 /* Array Bike*/
 
 var dataBike=[ 
-  {name:"BIK045",url:"/images/Bike-1.jpg", price:679},
-  {name:"ZOOK7",url:"/images/Bike-3.jpg", price:799},
-  {name:"BX053",url:"/images/Bike-3.jpg", price:799},
-  {name:"BD098",url:"/images/Bike-4.jpg", price:948},
-  {name:"BDOLE",url:"/images/Bike-5.jpg", price:908},
+  {name:"BIK045",url:"/images/bike-1.jpg", price:679},
+  {name:"ZOOK7",url:"/images/bike-3.jpg", price:799},
+  {name:"BX053",url:"/images/bike-3.jpg", price:799},
+  {name:"BD098",url:"/images/bike-4.jpg", price:948},
+  {name:"BDOLE",url:"/images/bike-5.jpg", price:908},
 ]; 
 
 /* GET home page. */
