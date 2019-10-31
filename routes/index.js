@@ -1,6 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
+// STRIPE KEYS
+// Set your secret key: remember to change this to your live secret key in production
+// See your keys here: https://dashboard.stripe.com/account/apikeys
+const stripe = require('stripe')('sk_test_UfAoQomPqsyOomxrw1D5bvRY00jrfMIiOc');
+
 /* Array Bike*/
 
 var dataBike=[ 
@@ -22,7 +27,7 @@ router.get('/', function(req, res, next) {
 
 /*GET SHOP page*/
 
-router.post("/shop", function(req,res,next){
+router.post("/shop", function(req,res,next) {
   console.log(req.body);
 
   req.session.cardBike.push({
@@ -36,6 +41,27 @@ router.post("/shop", function(req,res,next){
   res.render('shop',{dataBike,cardBike:req.session.cardBike})
 });
 
+// STIPE KEYS
+
+router.post("/charge",function(req,res) {
+// Token is created using Checkout or Elements!
+// Get the payment token ID submitted by the form:
+const token = req.body.stripeToken; // Using Express
+
+var totalCmdfrombackend=0;
+
+(async () => {
+  const charge = await stripe.charges.create({
+    amount: 999,
+    currency: 'eur',
+    description: 'Example charge',
+    source: token,
+  });
+
+});
+res.render('shop',{cardBike:req.session.cardBike})
+});
+
 /*delete*/
 
 router.post('/delete-shop', function(req, res, next) {
@@ -45,7 +71,7 @@ router.post('/delete-shop', function(req, res, next) {
   req.session.cardBike.splice(req.body.position, 1);
   
   res.render('shop', {cardBike:req.session.cardBike});
-});
+})
 
 /*refresh*/
 

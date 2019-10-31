@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="/stylesheets/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Darker+Grotesque&display=swap" rel="stylesheet">
-    <script src="https://use.fontawesome.com/a7ec7986bf.js"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="/stylesheets/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Darker+Grotesque&display=swap" rel="stylesheet">
+        <script src="https://js.stripe.com/v3/"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://use.fontawesome.com/a7ec7986bf.js"></script>
+
     <title>Bike Shop</title>
 </head>
 <body>
@@ -110,13 +115,76 @@
 
         </div>
 
+        <!-- Button trigger modal -->
+                <div class="row">
+                                <div class="col-12 text-right">
+                                        <button type="button" class="btn btn-outline-info btn-checkout" data-toggle="modal" data-target="#exampleModalCenter">Checkout</button>
+                                
+                                </div>
+                        </div> 
+        
+   
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Paiement de la commande </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+
+                <form action="/charge" method="post" id="payment-form">
+                        <div class="form-row">
+
+                                        <div class="form-group col-md-6">
+                                                <label for="exampleInputName">Name</label>
+                                                <input type="text" class="form-control" id="exampleInputNom" aria-describedby="emailHelp" placeholder="Enter name">       
+                                        </div> 
+
+                                        <div class="form-group col-md-6">
+                                                        <label for="exampleInputSurname">Surname</label>
+                                                        <input type="text" class="form-control" id="exampleInputPrenom" aria-describedby="emailHelp" placeholder="Enter surname">       
+                                        </div>  
+
+                        </div>
+
+                        <div class="form-group">
+                                <label for="exampleInputAdress">Adress</label>
+                                <input type="text" class="form-control" id="exampleInputAdress" aria-describedby="emailHelp" placeholder="Enter adresse">       
+                        </div>
+
+                        <div class="form-group">
+                                 <label for="exampleInputEmail1">ZipCode</label>
+                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter ZipCode">       
+                        </div>
+
+                        <div class="form-group">
+                                <label for="exampleInputEmail1">Email address</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+                        
+                        <div>                    
+                                <label for="card-element">
+                                </label>
+                                <div id="card-element">
+                                <!-- A Stripe Element will be inserted here. -->
+                                </div>
+
+                                <!-- Used to display form errors. -->
+                                <div id="card-errors" role="alert"></div>
+                        </div>
+                                <button>Submit Payment</button>
+        </form>
          
-         <div class="row">
-                <div class="col-12 text-right">
-                        <button type="button" class="btn btn-outline-info btn-checkout">Checkout</button>
-                       
                 </div>
-         </div> 
+               
+                </div>
+                </div>
+                </div>
 
          <% if(cardBike.length==0){%>
                 <p>No items in your basket</p>
@@ -124,6 +192,14 @@
         
          </div>
        
-     </div>          
+     </div> 
+
+
+
+        
+        <script src="/javascripts/script.js"></script>   
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+     
 </body>
 </html>
